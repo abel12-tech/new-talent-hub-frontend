@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Enhanced CSS custom properties with dark mode support */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    /* Added destructive color variables for error states */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    /* Added toast-specific variables for better dark mode support */
+    --toast-bg: 255 255 255;
+    --toast-color: 17 24 39;
+    --toast-border: 229 231 235;
+  }
+
+  .dark {
+    /* Enhanced dark mode color palette */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    /* Added dark mode destructive colors */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    /* Updated toast variables for dark mode */
+    --toast-bg: 31 41 55;
+    --toast-color: 243 244 246;
+    --toast-border: 75 85 99;
+  }
+
+  * {
+    /* Updated to use semantic border color */
+    @apply border-border;
+  }
+
+  body {
+    /* Updated to use semantic background and text colors */
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+
+  /* Enhanced scrollbar styling for dark mode */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    /* Updated scrollbar track colors */
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    /* Updated scrollbar thumb colors */
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    /* Updated scrollbar thumb hover colors */
+    @apply bg-border/80;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors shadow-sm hover:shadow-md;
+  }
+
+  /* Enhanced card component with dark mode support */
+  .card {
+    /* Updated to use semantic colors */
+    @apply bg-card text-card-foreground rounded-lg shadow-md p-6 border border-border transition-all duration-200 hover:shadow-lg;
+  }
+
+  /* Enhanced input field with dark mode support */
+  .input-field {
+    /* Updated to use semantic colors */
+    @apply w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent bg-background text-foreground placeholder:text-muted-foreground transition-colors;
+  }
+
+  /* Enhanced text color utilities for better dark mode support */
+  .text-primary-content {
+    /* Updated to use semantic colors */
+    @apply text-foreground;
+  }
+
+  .text-secondary-content {
+    /* Updated to use semantic colors */
+    @apply text-muted-foreground;
+  }
+
+  .text-muted-content {
+    /* Updated to use semantic colors */
+    @apply text-muted-foreground;
+  }
+
+  /* Added gradient backgrounds for hero sections */
+  .gradient-bg-primary {
+    @apply bg-gradient-to-br from-primary to-blue-800 dark:from-blue-600 dark:to-blue-900;
+  }
+
+  .gradient-bg-secondary {
+    @apply bg-gradient-to-br from-secondary to-green-700 dark:from-green-500 dark:to-green-800;
+  }
+
+  /* Enhanced text selection */
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  /* Focus styles for better accessibility */
+  .focus-ring {
+    /* Updated focus ring colors */
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Enhanced loading spinner */
+  .loading-spinner {
+    /* Updated to use semantic colors */
+    @apply animate-spin rounded-full border-2 border-border border-t-primary;
+  }
+
+  /* Added toast-specific styling for consistent dark mode appearance */
+  .toast-dark {
+    background: rgb(var(--toast-bg)) !important;
+    color: rgb(var(--toast-color)) !important;
+    border: 1px solid rgb(var(--toast-border)) !important;
+  }
+}
